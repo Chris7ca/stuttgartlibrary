@@ -24,7 +24,7 @@
                 <input type="text" class="uk-input" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="Your email" autofocus required>
             </div>
             <div class="uk-margin">
-                <input class="uk-input" name="password" type="password" placeholder="Your assword" required>
+                <input class="uk-input" name="password" type="password" placeholder="Your password" required>
             </div>
             <div class="uk-margin">
                 <label>
