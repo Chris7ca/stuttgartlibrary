@@ -1,41 +1,46 @@
-window._ = require('lodash');
+window._ = require('lodash')
 
-/**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
- */
+window.axios = require('axios')
 
-try {
-    window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
-    require('bootstrap');
-} catch (e) {}
+let token = document.head.querySelector('meta[name="csrf-token"]')
 
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
+if (token) {
+    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content
+} else {
+    console.error('CSRF token not found!')
+}
 
-window.axios = require('axios');
+const avatarElements = document.querySelectorAll('.uk-avatar-without-image')
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+const imageFromInitials = name => {
 
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
+    if (name == null) return 
 
-// import Echo from 'laravel-echo';
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
 
-// window.Pusher = require('pusher-js');
+    canvas.width = 40
+    canvas.height = 40
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: true
-// });
+    context.fillStyle = '#FFFFFF'
+    context.fillRect(0, 0, 40, 40)
+
+    context.fillStyle = '#579fb950'
+    context.fillRect(0, 0, 40, 40)
+
+    context.fillStyle = '#579fb9'
+    context.textBaseline = 'middle'
+    context.textAlign = 'center'
+    context.font = '25px Arial'
+    context.fillText(name, 20, 22.5)
+
+    return canvas.toDataURL()
+}
+
+avatarElements.forEach(avatarElement => {
+    avatarElement.setAttribute('src', imageFromInitials(
+        avatarElement.getAttribute('data-name').split(' ')[0].split('')[0])
+    )
+})
