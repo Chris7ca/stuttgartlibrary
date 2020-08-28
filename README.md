@@ -1,4 +1,4 @@
-<p align="center"><img src="https://stuttgart.christianmtz.com/images/stuttgart-logo.png" alt="Stuttgart Logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/Chris7ca/stuttgartlibrary/master/images/stuttgart-logo.png" alt="Stuttgart Logo"></p>
 
 # Stuttgart Library
 
