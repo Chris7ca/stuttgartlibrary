@@ -6,6 +6,7 @@
 /public/js/*
 !/public/js/uikit-icons.min.js
 !/public/js/uikit.min.js
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 .env
