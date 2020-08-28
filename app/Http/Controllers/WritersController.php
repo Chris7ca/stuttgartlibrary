@@ -27,7 +27,7 @@ class WritersController extends Controller
      */
     public function searchWriter(Request $request)
     {
-        $name = str_replace(' ', '%', $request->query('name'));
+        $name = str_replace(' ', '%', $request->query('find'));
 
         return $this->repository->search($name);
     }

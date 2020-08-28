@@ -35,6 +35,7 @@
 
 <script>
 
+import customSelect from './../../customSelect'
 import { EventBus } from './../../bus'
 
 export default {
@@ -143,46 +144,8 @@ export default {
         })
     },
     mounted() {
-
-        this.selectCategory = new SlimSelect({
-            select: '#select-form-category',
-            placeholder: 'Select a category'
-        })
-
-        this.selectAuthor = new SlimSelect({
-            select: '#select-form-writer',
-            placeholder: 'Select a writer',
-            searchFilter: (option, search) => {
-                let words = search.toUpperCase().split(' ')
-                return words.filter(word => option.text.toUpperCase().includes(word)).length > 0
-            },
-            ajax: function (search, callback) {
-                
-                if (search.length < 3) {
-                    callback('Need 3 characters')
-                    return
-                }
-
-                axios.get(route('writers.search', { name: search }))
-                .then( response => {
-
-                    let data = []
-
-                    response.data.forEach(writer => {
-                        data.push({
-                            text: writer.name,
-                            value: writer.id
-                        })
-                    })
-
-                    callback(data)
-                })
-                .catch( error => {
-                    UIkit.notification(error, 'danger')
-                    callback(false)
-                })
-            }
-        })
+        this.selectCategory = customSelect.simpleSelect('#select-form-category', 'Select a category')
+        this.selectAuthor = customSelect.ajaxSelect('#select-form-writer', 'Select a writer', route('writers.search'), 'name', 'id')
     }
 }
 </script>

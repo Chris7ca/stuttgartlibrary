@@ -51,6 +51,9 @@
 </template>
 
 <script>
+
+import customSelect from './../../customSelect'
+
 export default {
     props: ['category','author'],
     data() {
@@ -125,46 +128,8 @@ export default {
         this.loadCategories()
     },
     mounted() {
-
-        new SlimSelect({
-            select: '#select-category',
-            placeholder: 'Select a category'
-        })
-
-        new SlimSelect({
-            select: '#select-writer',
-            placeholder: 'Select a writer',
-            searchFilter: (option, search) => {
-                let words = search.toUpperCase().split(' ')
-                return words.filter(word => option.text.toUpperCase().includes(word)).length > 0
-            },
-            ajax: function (search, callback) {
-                
-                if (search.length < 3) {
-                    callback('Need 3 characters')
-                    return
-                }
-
-                axios.get(route('writers.search', { name: search }))
-                .then( response => {
-
-                    let data = []
-
-                    response.data.forEach(writer => {
-                        data.push({
-                            text: writer.name,
-                            value: writer.slug
-                        })
-                    })
-
-                    callback(data)
-                })
-                .catch( error => {
-                    UIkit.notification(error, 'danger')
-                    callback(false)
-                })
-            }
-        })
+        customSelect.simpleSelect('#select-category', 'Select a category')
+        customSelect.ajaxSelect('#select-writer', 'Select a writer', route('writers.search'), 'name', 'slug')
     }
 }
 </script>
