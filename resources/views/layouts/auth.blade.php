@@ -16,25 +16,28 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    @stack('css')
+
 </head>
 <body>
 
-    <div id="app">
-        
-        @include('components.header')
+    <main>
 
-        @yield('content_page')
+        <div class="uk-grid uk-grid-collapse uk-grid-match" uk-grid>
+            <div class="uk-width-1-3 uk-visible@m">
+                <div class="uk-position-relative uk-background-cover uk-background-center-right" data-src="https://images.pexels.com/photos/238118/pexels-photo-238118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" uk-height-viewport="offset-top: true" uk-img>
+                    
+                </div>
+            </div>
+            <div class="uk-width-2-3@m">
+                <div class="uk-position-relative uk-padding-large">
+                    @yield('content_page')
+                </div>
+            </div>
+        </div>
 
-    </div>
-
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
+    </main>
     
     <script src="{{ asset('js/uikit.min.js') }}"></script>
     <script src="{{ asset('js/uikit-icons.min.js') }}"></script>
-    @routes
-    @stack('js')
 </body>
 </html>
