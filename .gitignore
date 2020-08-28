@@ -1,6 +1,11 @@
 /node_modules
 /public/hot
 /public/storage
+/public/css/*
+!/public/css/slimselect.min.css
+/public/js/*
+!/public/js/uikit-icons.min.js
+!/public/js/uikit.min.js
 /storage/*.key
 /vendor
 .env
