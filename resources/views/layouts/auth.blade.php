@@ -24,12 +24,12 @@
 
         <div class="uk-grid uk-grid-collapse uk-grid-match" uk-grid>
             <div class="uk-width-1-3 uk-visible@m">
-                <div class="uk-position-relative uk-background-cover uk-background-center-right" data-src="https://images.pexels.com/photos/238118/pexels-photo-238118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" uk-height-viewport="offset-top: true" uk-img>
+                <div class="uk-position-relative uk-background-cover uk-background-center-right" data-src="https://images.pexels.com/photos/238118/pexels-photo-238118.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" uk-img>
                     
                 </div>
             </div>
             <div class="uk-width-2-3@m">
-                <div class="uk-position-relative uk-padding-large">
+                <div class="uk-position-relative uk-padding-large" uk-height-viewport="offset-top: true">
                     @yield('content_page')
                 </div>
             </div>
