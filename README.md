@@ -1,10 +1,10 @@
-<p align="center"><img src="https://raw.githubusercontent.com/Chris7ca/stuttgartlibrary/master/images/stuttgart-logo.png" alt="Stuttgart Logo"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/chris7ca/stuttgartlibrary/master/stuttgart-logo.png" alt="Stuttgart Logo"></p>
 
 # Stuttgart Library
 
 Este repositorio es una prueba de desarrollo para aplicar como desarrollador web en [DIT](WWW.DIT.MX).
 
-## Ver el proyecto en línea
+## Ver el proyecto en línea 
 
 Para ver el proyecto en línea, vaya a [https://stuttgart.christianmtz.com](https://stuttgart.christianmtz.com). Para acceder o iniciar sesión puede acerlo con las credenciales porporcionadas por correo.
 
